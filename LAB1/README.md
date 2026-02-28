@@ -39,3 +39,25 @@ docker exec -it 263fc290ed7d123ef8cfa455961cda5a2e42af2cb3a6e9caa2983c1d13cfb3a5
 ```
 
 ![Step 4](images/04.png)
+
+---
+
+## Question 2 - Bonus
+
+### Steps:
+
+- Run an alpine container called memory-eater with memory limit of 50M
+- Make sure that the container does not use swap memory as well
+- Construct the container such that it should consume more than 50M of memory
+- Prove that container is being killed by the OOM killer
+
+```bash
+docker run --memory=50m --memory-swap=50m --name memory-eater alpine sh -c 'x=a; while true; do x=$x$x; done'
+```
+
+![Step 5](images/05.png)
+
+Status: ```Exited (137)```
+Exit Code = 128 + Signal Number ```SIGKILL = 9```
+
+![Step 6](images/06.png)
