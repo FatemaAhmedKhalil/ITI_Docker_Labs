@@ -61,3 +61,8 @@ Status: ```Exited (137)```
 Exit Code = 128 + Signal Number ```SIGKILL = 9```
 
 ![Step 6](images/06.png)
+
+```bash
+docker inspect memory-eater
+```
+![Step 6](images/07.png)
