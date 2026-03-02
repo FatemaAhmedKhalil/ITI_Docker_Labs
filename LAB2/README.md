@@ -18,7 +18,7 @@ RUN pip install -r basic-flask-app/requirements.txt
 ENTRYPOINT ["python", "basic-flask-app/app.py"]
 ```
 
-Since the Repo ```requirment.txt``` contains old versions, I tried to install latest versions manually
+Since the Repo ```requirment.txt``` contains old versions, I tried to install latest versions by removing the old version numbers from the file
 
 The Repo shows that the App Name is ```route.py``` in WORKDIR: ```/app/basic-flask-app```
 
@@ -30,11 +30,14 @@ WORKDIR /app
 RUN apk add --no-cache git
 RUN git clone https://github.com/meldafrawi/basic-flask-app.git
 
-#Install requirment.txt latest
-RUN pip install appdirs click Flask itsdangerous Jinja2 MarkupSafe packaging pyparsing six Werkzeug
+#RUN pip install appdirs click Flask itsdangerous Jinja2 MarkupSafe packaging pyparsing six Werkzeug
 
-#Go to App Work Directory
+# Go to App Work Directory
 WORKDIR /app/basic-flask-app
+#Remove the old versions from requirment,txt file
+RUN sed -i 's/==.*//g' requirements.txt
+#Install requirment in latest version
+RUN pip install -r requirements.txt
 
 CMD [ "python", "routes.py" ]
 ```
@@ -42,7 +45,7 @@ CMD [ "python", "routes.py" ]
 Build the Image:
 
 ```bash
-docker build -t ITI-flask-lab2 .
+docker build -t iti-flask-lab2 .
 ```
 
 ![step 2](images/02.png)
@@ -51,7 +54,7 @@ docker build -t ITI-flask-lab2 .
 - Make sure that the image runs successfully on your machine and publish Port ```127.0.0.1:5000``` to Port ```80``` ON THE HOST
 
 ```bash
-docker run -d -memory=100m -p 127.0.0.1:80:5000 ITI-flask-lab2 
+docker run -d --memory=100m -p 127.0.0.1:80:5000 iti-flask-lab2 
 ```
 
 ![step 3](images/03.png)
