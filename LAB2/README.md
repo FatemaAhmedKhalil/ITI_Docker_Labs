@@ -98,7 +98,7 @@ docker network create --driver=bridge --subnet=10.0.0.0/8 iti-network
     - The index page should have the text in ```Lab 2 ITI - (your name)```
     - You should use volumes for the index page
 
-The Page ```index.html``` in my Host Machine
+Create The Page ```index.html``` in my Host Machine
 
 ```bash
 echo "<h1>Lab 2 ITI - Fatma Ahmed Khalil</h1>" > index.html
