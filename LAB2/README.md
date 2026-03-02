@@ -33,7 +33,7 @@ RUN git clone https://github.com/meldafrawi/basic-flask-app.git
 # Go to App Work Directory
 WORKDIR /app/basic-flask-app
 
-#Remove the old versions from requirment,txt file
+#Remove the old versions from requirment.txt file
 RUN sed -i 's/==.*//g' requirements.txt
 
 #Install requirment in latest version
