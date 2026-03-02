@@ -29,8 +29,13 @@ FROM python:alpine
 WORKDIR /app
 RUN apk add --no-cache git
 RUN git clone https://github.com/meldafrawi/basic-flask-app.git
+
+#Install requirment.txt latest
 RUN pip install appdirs click Flask itsdangerous Jinja2 MarkupSafe packaging pyparsing six Werkzeug
+
+#Go to App Work Directory
 WORKDIR /app/basic-flask-app
+
 CMD [ "python", "routes.py" ]
 ```
 
@@ -61,6 +66,16 @@ curl 127.0.0.1:80
 ![step 4](images/04.png)
 
 ![Final](images/01.png)
+
+- Push the image to Docker Hub account ```fatemaahmedkhalil```
+
+```bash
+docker login
+docker tag iti-flask-lab2 fatemaahmedkhalil/iti-flask-lab2:v0.1
+docker push fatemaahmedkhalil/iti-flask-lab2:v0.1
+```
+
+![step 5](images/05.png)
 
 ---
 
