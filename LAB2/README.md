@@ -82,3 +82,49 @@ docker push fatemaahmedkhalil/iti-flask-lab2:v0.1
 ## Question 2
 
 ### Steps:
+
+- Create a new network and name it **iti-network**
+- The new network should be a bridge driver and uses a Subnet ```10.0.0.0/8```
+
+```bash
+docker network create --driver=bridge --subnet=10.0.0.0/8 iti-network
+```
+
+![step 6](images/06.png)
+
+- Run the image ```nginx:alpine``` or ```httpd```, and the container should:
+    - Have the name **webserver-iti**
+    - Publish the Port ```8080``` from within the container to Port ```8080```
+    - The index page should have the text in ```Lab 2 ITI - (your name)```
+    - You should use volumes for the index page
+
+The Page ```index.html``` in my Host Machine
+
+```bash
+echo "<h1>Lab 2 ITI - Fatma Ahmed Khalil</h1>" > index.html
+```
+
+Create the Volume and run ```nginx:alpine```
+
+```bash
+docker volume create myVolume
+docker run -d --network iti-network --name webserver-iti -p 8080:80 -v myVolume:/usr/share/nginx/html nginx:alpine
+```
+
+![step 7](images/07.png)
+
+Copy the ```index.html``` to the running container
+
+```bash
+docker cp index.html webserver-iti:/usr/share/nginx/html
+```
+
+![step 8](images/08.png)
+
+Test the Container
+
+```bash
+curl localhost:8080
+```
+
+![step 9](images/09.png)
