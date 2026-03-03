@@ -15,7 +15,7 @@ WORKDIR /app
 RUN apk add --no-cache git
 RUN git clone https://github.com/meldafrawi/basic-flask-app.git
 RUN pip install -r basic-flask-app/requirements.txt
-ENTRYPOINT ["python", "basic-flask-app/app.py"]
+ENTRYPOINT ["python", "basic-flask-app/routes.py"]
 ```
 
 Since the Repo ```requirment.txt``` contains old versions, I tried to install latest versions by removing the old version numbers from the file
@@ -74,8 +74,8 @@ curl 127.0.0.1:80
 
 ```bash
 docker login
-docker tag iti-flask-lab2 fatemaahmedkhalil/iti-flask-lab2:v0.1
-docker push fatemaahmedkhalil/iti-flask-lab2:v0.1
+docker tag iti-flask-lab2 fatemaahmedkhalil/iti-flask-lab2:v1.0
+docker push fatemaahmedkhalil/iti-flask-lab2:v1.0
 ```
 
 ![step 5](images/05.png)
