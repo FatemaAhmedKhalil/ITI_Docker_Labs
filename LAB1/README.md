@@ -51,8 +51,16 @@ docker exec -it 263fc290ed7d123ef8cfa455961cda5a2e42af2cb3a6e9caa2983c1d13cfb3a5
 - Construct the container such that it should consume more than 50M of memory
 - Prove that container is being killed by the OOM killer
 
+Run with Interactive Mode
+
 ```bash
-docker run --memory=50m --memory-swap=50m --name memory-eater alpine sh -c 'x=a; while true; do x=$x$x; done'
+docker run -it --memory=50m --memory-swap=50m --name memory-eater alpine
+```
+
+Run this command in The Shell to Exceed the Memory
+
+```shell
+x=a; while true; do x=$x$x; done
 ```
 
 ![Step 5](images/05.png)
