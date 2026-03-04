@@ -1,0 +1,21 @@
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - myVolume:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret123
+      MYSQL_DATABASE: wordpress_db
+
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: secret123
+      WORDPRESS_DB_NAME: wordpress_db
+
+volumes:
+  myVolume:

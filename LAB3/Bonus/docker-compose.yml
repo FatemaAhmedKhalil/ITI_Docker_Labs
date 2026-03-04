@@ -1,0 +1,12 @@
+services:
+  flask:
+    image: localhost:5000/iti-flask-lab2:v1.0
+    ports:
+      - "8080:5000"
+      
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
