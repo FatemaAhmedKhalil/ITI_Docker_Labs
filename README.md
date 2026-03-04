@@ -19,4 +19,3 @@ Each lab focuses on practical tasks to enhance understanding of key concepts, to
 
 - Required software/tools installed (Ubuntu, Docker, Git)  
 - Basic knowledge of the lab topic
-  
